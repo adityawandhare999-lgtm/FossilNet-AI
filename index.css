@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,500;0,700;1,300&family=Inter:wght@300;400;500;600&family=Outfit:wght@200;400;500;700&display=swap');
+
+:root {
+  /* Premium Prehistoric Museum & Lab Earthy Tones */
+  --bg-obsidian: #080706;       /* Ultimate dark coal */
+  --bg-charcoal: #120e0d;       /* Soft dark clay */
+  --earth-sand: #d4a373;        /* Earthy sandstone sand */
+  --earth-sand-muted: #bda38f;  /* Weathered silt */
+  --earth-amber: #d97706;       /* Hot amber/fossil resin */
+  --earth-amber-glow: rgba(217, 119, 6, 0.15);
+  --earth-stone: #241d1a;       /* Deep sedimentary rock */
+  --earth-copper: #a76b43;      /* Oxidized iron/clay */
+  --earth-clay: #78350f;        /* Compressed mud stone */
+  
+  /* Bevel & Inner Light Refraction (Tactile & Solid Glass) */
+  --glass-bg: rgba(18, 14, 13, 0.4);
+  --glass-bg-hover: rgba(36, 29, 26, 0.55);
+  --glass-border: rgba(212, 163, 115, 0.06);
+  --glass-border-hover: rgba(212, 163, 115, 0.15);
+  --glass-blur: blur(20px);
+  
+  --glass-bevel: inset 0 1px 1px rgba(255, 255, 255, 0.05), inset 0 -1px 2px rgba(0, 0, 0, 0.8);
+  --glass-inner-glow: inset 0 0 25px rgba(212, 163, 115, 0.015);
+  
+  /* Classic Cinematic Typography Pairs */
+  --font-display: 'Cinzel', serif;                  /* Ancient monuments, major headings */
+  --font-editorial: 'Cormorant Garamond', serif;    /* Scientific logs, captions, elegance */
+  --font-number: 'Outfit', sans-serif;              /* Chronological scale, coordinates */
+  --font-body: 'Inter', sans-serif;                 /* High readability copy */
+  
+  --text: #f5f5f4;               /* Antique bone white */
+  --text-muted: rgba(245, 245, 244, 0.65); /* Weathered paper text */
+  --text-dim: rgba(245, 245, 244, 0.38);   /* Shadowed stone text */
+  
+  --transition-cubic: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Physically Accurate Museum Layered Shadows */
+  --shadow-deep: 0 40px 90px -20px rgba(0, 0, 0, 0.95);
+  --shadow-spotlight: 0 0 120px rgba(217, 119, 6, 0.07);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Body Styles */
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-obsidian);
+  color: var(--text);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fine-Grained Film Texture Overlay (Hands-on Lab feel) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Sand-styled Scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-obsidian);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--earth-stone);
+  border-radius: 2px;
+  border: 3px solid var(--bg-obsidian);
+  transition: var(--transition-cubic);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--earth-sand);
+}
+
+/* Grid & Layout Constraints */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* Typography Hierarchy - Classical & Editorial */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  letter-spacing: -0.01em;
+}
+
+p {
+  line-height: 1.75;
+}
+
+/* Catalog Specimen tag */
+.catalog-tag {
+  font-family: var(--font-number);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--earth-sand);
+  text-transform: uppercase;
+  font-weight: 700;
+  border-left: 2px solid var(--earth-sand);
+  padding-left: 8px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+/* Utility Text: lab parameters & coordinates */
+.utility-text {
+  font-family: var(--font-number);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+}
+
+.utility-text-large {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--earth-sand);
+}
+
+/* 3D Perspective setup */
+.perspective-container {
+  perspective: 1500px;
+}
+
+/* Premium Archeological Wooden and Sand Glass Beveled Cards */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 0px; /* Sharp handcrafted museum look */
+  box-shadow: var(--shadow-deep), var(--glass-bevel), var(--glass-inner-glow);
+  transition: var(--transition-cubic);
+}
+
+/* Asymmetric hand-cut 3D display vitrines */
+.museum-vitrine {
+  background: radial-gradient(circle at 50% 0%, rgba(36, 29, 26, 0.4) 0%, rgba(18, 14, 13, 0.6) 100%);
+  border: 1px solid var(--glass-border);
+  border-radius: 4px;
+  padding: 40px;
+  box-shadow: var(--shadow-deep), var(--glass-bevel);
+  transform-style: preserve-3d;
+  transition: var(--transition-cubic);
+  position: relative;
+  overflow: hidden;
+}
+
+.museum-vitrine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--earth-sand), transparent);
+  opacity: 0.4;
+}
+
+.museum-vitrine:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-8px) rotateX(2deg) rotateY(-2deg);
+  box-shadow: var(--shadow-deep), 0 0 40px rgba(212, 163, 115, 0.04), var(--glass-bevel);
+}
+
+/* Physical Glass Sheen effect on hover */
+.glass-sheen-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-sheen-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 45%,
+    rgba(212, 163, 115, 0.05) 50%,
+    transparent 55%
+  );
+  transform: rotate(45deg);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.glass-sheen-wrapper:hover::before {
+  animation: sheen-reflection 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sheen-reflection {
+  0% {
+    transform: translate(-100%, -100%) rotate(45deg);
+  }
+  100% {
+    transform: translate(100%, 100%) rotate(45deg);
+  }
+}
+
+/* Earth Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 40%, var(--earth-sand) 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium Buttons - Incandescent Amber and Copper Bevel */
+.btn-primary {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--earth-copper), var(--earth-sand));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  padding: 16px 32px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(167, 107, 67, 0.15), var(--glass-bevel);
+  transition: var(--transition-cubic);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(212, 163, 115, 0.25), var(--glass-bevel);
+  border-color: rgba(212, 163, 115, 0.3);
+}
+
+.btn-primary:active {
+  transform: translateY(-1px);
+}
+
+/* Secondary Button - Antique Border Style */
+.btn-secondary {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--earth-sand);
+  background: transparent;
+  border: 1px solid rgba(212, 163, 115, 0.25);
+  border-radius: 2px;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: var(--transition-cubic);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-secondary:hover {
+  color: #ffffff;
+  border-color: var(--earth-sand);
+  background: rgba(212, 163, 115, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Ambient Radial Fog/Spotlight Gradients */
+.bg-mesh-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bg-mesh-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(160px);
+  opacity: 0.18;
+}
+
+.bg-mesh-top-left {
+  top: -10%;
+  left: -10%;
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, var(--earth-clay) 0%, transparent 80%);
+}
+
+.bg-mesh-bottom-right {
+  bottom: -15%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, var(--earth-stone) 0%, transparent 80%);
+}
+
+.bg-mesh-accent {
+  top: 30%;
+  left: 40%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, var(--earth-amber) 0%, transparent 75%);
+  opacity: 0.08;
+}
+
+/* Shimmering Badge - lab telemetry */
+.shimmer-badge {
+  background: linear-gradient(90deg, rgba(212,163,115,0.01) 0%, rgba(212,163,115,0.03) 30%, rgba(212,163,115,0.12) 50%, rgba(212,163,115,0.03) 70%, rgba(212,163,115,0.01) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear;
+  border: 1px solid rgba(212, 163, 115, 0.08);
+  border-radius: 2px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Earth Pulse Telemetry Indicator */
+.system-status-indicator {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--earth-sand);
+  display: inline-block;
+  position: relative;
+}
+
+.system-status-indicator::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: rgba(212, 163, 115, 0.35);
+  animation: radar-pulse 3s infinite ease-out;
+}
+
+@keyframes radar-pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Classic Scientific Inputs */
+input, textarea {
+  font-family: var(--font-body);
+  background: rgba(10, 8, 7, 0.8);
+  border: 1px solid rgba(212, 163, 115, 0.15);
+  color: #ffffff;
+  border-radius: 2px;
+  font-weight: 400;
+  transition: var(--transition-fast);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--earth-sand) !important;
+  box-shadow: 0 0 15px rgba(212, 163, 115, 0.08) !important;
+  outline: none;
+}
+
+/* Skeletons - sedimentary layers style */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(36, 29, 26, 0.3) !important;
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    rgba(212, 163, 115, 0) 0%,
+    rgba(212, 163, 115, 0.03) 30%,
+    rgba(212, 163, 115, 0.06) 60%,
+    rgba(212, 163, 115, 0) 100%
+  );
+  animation: skeleton-shimmer 2.2s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* Leaflet maps - dark sepia museum calibration */
+.leaflet-container {
+  background: #0d0b0a !important;
+  border: 1px solid rgba(212, 163, 115, 0.15) !important;
+  border-radius: 2px !important;
+  filter: sepia(0.6) contrast(1.1) brightness(0.85) hue-rotate(345deg);
+}
+
+.leaflet-bar {
+  border: 1px solid rgba(212, 163, 115, 0.2) !important;
+  background: rgba(18, 14, 13, 0.9) !important;
+}
+
+.leaflet-bar a {
+  background: rgba(18, 14, 13, 0.9) !important;
+  color: var(--earth-sand) !important;
+  border-bottom: 1px solid rgba(212, 163, 115, 0.1) !important;
+}
+
+.leaflet-bar a:hover {
+  background: var(--earth-stone) !important;
+  color: #fff !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(18, 14, 13, 0.95) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--earth-sand) !important;
+  border-radius: 2px !important;
+  color: var(--text) !important;
+}
+
+.leaflet-popup-tip {
+  background: var(--earth-stone) !important;
+  border: 1px solid var(--earth-sand) !important;
+}
