@@ -1,19 +1,27 @@
-from django.urls import path
-from .views import (
-    FossilIdentifyView, LiteratureMiningView, AssistantChatView, 
-    ProspectorAIView, TimeMachineView, VoiceTranscribeView, SpeechSynthesisView,
-    RAGUploadView, RAGQueryView
-)
+"""
+URL configuration for fossilnet_backend project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/6.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path, include
+from fossil_api.root_view import root_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('identify/', FossilIdentifyView.as_view(), name='identify'),
-    path('mining/', LiteratureMiningView.as_view(), name='mining'),
-    path('assistant/', AssistantChatView.as_view(), name='assistant'),
-    path('prospector/', ProspectorAIView.as_view(), name='prospector'),
-    path('timeline/', TimeMachineView.as_view(), name='timeline'),
-    path('transcribe/', VoiceTranscribeView.as_view(), name='transcribe'),
-    path('synthesize/', SpeechSynthesisView.as_view(), name='synthesize'),
-    path('rag/upload/', RAGUploadView.as_view(), name='rag_upload'),
-    path('rag/query/', RAGQueryView.as_view(), name='rag_query'),
-]
-
+    path('admin/', admin.site.urls),
+    path('', root_view, name='root'),
+    path('api/', include('fossil_api.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
